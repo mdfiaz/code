@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    char shape;
+    float size;
+
+    // Input
+    printf("Enter the shape (S for Square, C for Circle): ");
+    scanf("%c", &shape);
+
+    printf("Enter the size: ");
+    scanf("%f", &size);
+
+    // Calculate and output the area
+    if (shape == 'S' || shape == 's') {
+        // Area of Square
+        float area_square = size * size;
+        printf("Area of Square = %.2f\n", area_square);
+    } else if (shape == 'C' || shape == 'c') {
+        // Area of Circle
+        float area_circle = M_PI * pow(size / 2, 2);
+        printf("Area of Circle = %.2f\n", area_circle);
+    } else {
+        // Invalid input
+        printf("Invalid shape input. Please enter 'S' for Square or 'C' for Circle.\n");
+    }
+
+    return 0;
+}
