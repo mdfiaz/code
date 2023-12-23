@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+bool canJump(int nums[], int size) {
+    int maxReach = 0;
+
+    for (int i = 0; i < size; ++i) {
+        if (i > maxReach) {
+            return false;
+        }
+        maxReach = (i + nums[i]) > maxReach ? (i + nums[i]) : maxReach;
+    }
+
+    return maxReach >= size - 1;
+}
+
+int main() {
+    int nums1[] = {2, 3, 1, 1, 4};
+    int size1 = sizeof(nums1) / sizeof(nums1[0]);
+    printf("%s\n", canJump(nums1, size1) ? "true" : "false");
+
+    int nums2[] = {3, 2, 1, 0, 4};
+    int size2 = sizeof(nums2) / sizeof(nums2[0]);
+    printf("%s\n", canJump(nums2, size2) ? "true" : "false");
+
+    return 0;
+}

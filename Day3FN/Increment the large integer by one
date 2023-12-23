@@ -1,0 +1,34 @@
+#include <stdio.h>
+
+void increment(int digits[], int size) {
+    int carry = 1;
+    for (int i = size - 1; i >= 0; --i) {
+        int total = digits[i] + carry;
+        digits[i] = total % 10;
+        carry = total / 10;
+    }
+
+    if (carry) {
+        printf("1, ");  // Print the carry if there's any
+    }
+
+    for (int i = 0; i < size; ++i) {
+        printf("%d", digits[i]);
+        if (i < size - 1) {
+            printf(", ");
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int digits1[] = {1, 2, 3};
+    int size1 = sizeof(digits1) / sizeof(digits1[0]);
+    increment(digits1, size1);
+
+    int digits2[] = {9};
+    int size2 = sizeof(digits2) / sizeof(digits2[0]);
+    increment(digits2, size2);
+
+    return 0;
+}
