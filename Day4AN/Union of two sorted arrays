@@ -1,0 +1,94 @@
+#include <stdio.h>
+
+void printUnion(int arr1[], int n, int arr2[], int m) {
+    int i = 0, j = 0;
+
+    printf("Union of the two arrays: ");
+    
+    while (i < n && j < m) {
+        if (arr1[i] < arr2[j]) {
+            printf("%d ", arr1[i]);
+            i++;
+        } else if (arr2[j] < arr1[i]) {
+            printf("%d ", arr2[j]);
+            j++;
+        } else {
+            // If both elements are equal, print any of them and move both pointers
+            printf("%d ", arr1[i]);
+            i++;
+            j++;
+        }
+    }
+
+    // Print the remaining elements of both arrays, if any
+    while (i < n) {
+        printf("%d ", arr1[i]);
+        i++;
+    }
+
+    while (j < m) {
+        printf("%d ", arr2[j]);
+        j++;
+    }
+}
+
+int main() {
+    // Example 1
+    int arr1_1[] = {1, 2, 3, 4, 5};
+    int n1 = sizeof(arr1_1) / sizeof(arr1_1[0]);
+
+    int arr2_1[] = {1, 2, 3};
+    int m1 = sizeof(arr2_1) / sizeof(arr2_1[0]);
+
+    printf("Example 1:\nInput:\n");
+    printf("n = %d, arr1[] = {", n1);
+    for (int i = 0; i < n1; i++) {
+        printf("%d", arr1_1[i]);
+        if (i < n1 - 1) {
+            printf(", ");
+        }
+    }
+    printf("}\n");
+
+    printf("m = %d, arr2[] = {", m1);
+    for (int i = 0; i < m1; i++) {
+        printf("%d", arr2_1[i]);
+        if (i < m1 - 1) {
+            printf(", ");
+        }
+    }
+    printf("}\n");
+
+    printUnion(arr1_1, n1, arr2_1, m1);
+    printf("\n\n");
+
+    // Example 2
+    int arr1_2[] = {2, 2, 3, 4, 5};
+    int n2 = sizeof(arr1_2) / sizeof(arr1_2[0]);
+
+    int arr2_2[] = {1, 1, 2, 3, 4};
+    int m2 = sizeof(arr2_2) / sizeof(arr2_2[0]);
+
+    printf("Example 2:\nInput:\n");
+    printf("n = %d, arr1[] = {", n2);
+    for (int i = 0; i < n2; i++) {
+        printf("%d", arr1_2[i]);
+        if (i < n2 - 1) {
+            printf(", ");
+        }
+    }
+    printf("}\n");
+
+    printf("m = %d, arr2[] = {", m2);
+    for (int i = 0; i < m2; i++) {
+        printf("%d", arr2_2[i]);
+        if (i < m2 - 1) {
+            printf(", ");
+        }
+    }
+    printf("}\n");
+
+    printUnion(arr1_2, n2, arr2_2, m2);
+
+    return 0;
+}

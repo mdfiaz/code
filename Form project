@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int totalHoursNeeded, numDays, numWorkers;
+
+    // Taking user input
+    printf("Enter total number of hours needed: ");
+    scanf("%d", &totalHoursNeeded);
+
+    printf("Enter number of days: ");
+    scanf("%d", &numDays);
+
+    printf("Enter number of workers: ");
+    scanf("%d", &numWorkers);
+
+    // Calculate total hours available considering training days
+    int totalHoursAvailable = (numDays - (numDays * 0.10)) * 8;
+
+    // Calculate total hours worked with overtime
+    int totalHoursWorked = numWorkers * (numDays - (numDays * 0.10)) * 10;
+
+    // Check if the time is enough
+    if (totalHoursWorked >= totalHoursNeeded) {
+        int hoursLeft = totalHoursWorked - totalHoursNeeded;
+        printf("Yes! %d hours left.\n", hoursLeft);
+    } else {
+        int additionalHours = totalHoursNeeded - totalHoursWorked;
+        printf("Not enough time! %d hours needed.\n", additionalHours);
+    }

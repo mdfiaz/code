@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+// Function to find the second largest distinct element
+int secondLargestDistinct(int arr[], int n) {
+    int first, second;
+
+    // Initialize the first and second largest elements
+    if (arr[0] > arr[1]) {
+        first = arr[0];
+        second = arr[1];
+    } else {
+        first = arr[1];
+        second = arr[0];
+    }
+
+    // Traverse the array to find the first and second largest distinct elements
+    for (int i = 2; i < n; i++) {
+        if (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } else if (arr[i] < first && arr[i] > second) {
+            second = arr[i];
+        }
+    }
+
+    return second;
+}
+
+int main() {
+    int N;
+    printf("Enter the size of the array: ");
+    scanf("%d", &N);
+
+    int Arr[N];
+    printf("Enter the elements of the array:\n");
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &Arr[i]);
+    }
+
+    int result = secondLargestDistinct(Arr, N);
+
+    printf("The second largest distinct element is: %d\n", result);
+
+    return 0;
+}
